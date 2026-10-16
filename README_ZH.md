@@ -246,7 +246,7 @@ hover `#e86b00`、active `#d96100` 与 `:focus-visible` 焦点环由 `apply()` �
 
 ```powershell
 $src = "<本目录>"
-$profile = "C:\Users\SZTM\.dsh\profiles\desktop"
+$profile = "$env:USERPROFILE\.dsh\profiles\desktop"
 Copy-Item $src "$profile\node_modules\dsh-agnes-image" -Recurse -Force
 # 再把 "dsh-agnes-image" 追加进 $profile\package.json 的 dsh.profile.bundles
 ```
