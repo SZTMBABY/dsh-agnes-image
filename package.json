@@ -1,0 +1,49 @@
+{
+  "name": "dsh-agnes-image",
+  "version": "1.4.0",
+  "private": true,
+  "description": "Agnes image and video generation for DeepSeek Harness: agnes_generate_image / agnes_generate_video agent tools, an AI prompt optimizer (Agnes text model or the harness' own model), and a sidebar panel (images / videos / library / settings) whose API key is entered in the panel and whose cards show thumbnails, hand files to the desktop default app on double click, and never play videos in place.",
+  "type": "module",
+  "icon": "icon.svg",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "manifestVersion": 1,
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-workspace"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SZTMBABY/dsh-agnes-image.git"
+  },
+  "homepage": "https://github.com/SZTMBABY/dsh-agnes-image",
+  "bugs": {
+    "url": "https://github.com/SZTMBABY/dsh-agnes-image/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "agnes",
+    "image-generation",
+    "video-generation"
+  ],
+  "engines": {
+    "node": ">=22.19"
+  }
+}

@@ -1,0 +1,22 @@
+# --- plugin runtime data (never commit) ---
+settings.json
+history.json
+video-history.json
+video-tasks.json
+agnes-images/
+agnes-videos/
+
+# --- secret material: a credential must never reach this repository ---
+*.key
+*.pem
+.env
+.env.*
+.credentials.yaml
+
+# --- editor / OS ---
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
+*.log
+node_modules/

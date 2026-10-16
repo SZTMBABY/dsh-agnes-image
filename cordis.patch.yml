@@ -1,0 +1,24 @@
+# dsh-agnes-image — bundle patch layer.
+#
+# Loaded automatically once the profile lists "dsh-agnes-image" in
+# package.json -> dsh.profile.bundles. The row `id` (agnes-image) is also the
+# settings namespace the browser panel writes to via ctx.settings.
+- insert:
+    - id: agnes-image
+      name: dsh-agnes-image
+      config:
+        # No credential ships with this plugin. The API key is entered once in
+        # the panel's Settings tab and stored in
+        # %DSH_HOME%/agnes-image/settings.json; nothing works until then.
+        model: agnes-image-2.5-flash
+        size: "2K"
+        ratio: "1:1"
+        timeoutMs: 300000
+        # Empty = write into the calling session's workspace.
+        outputDir: ""
+        historyLimit: 200
+        # Prompt optimizer backend: "agnes" (free Agnes text model, uses the same
+        # panel key) or "dsh" (this profile's own model, no extra key). Switchable
+        # from the panel at any time; the panel value wins over this one.
+        optimizeBackend: agnes
+        optimizeModel: agnes-3.0-flash
