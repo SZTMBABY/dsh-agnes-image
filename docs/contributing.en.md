@@ -24,7 +24,7 @@ node --check client.js
 - `node --check` parses syntax only. It does not type-check and does not resolve dependencies, so passing it is not proof the logic is right.
 - Changed `client.js`: the host recomposes the graph and serves a new rev, so a page refresh picks it up (the HMR receiver may save you the refresh).
 - Changed `index.js`: a loaded module generation cannot be hot-replaced, so restart the profile.
-- The version lives in `version` in `package.json` and in the `version` field `status()` returns in `index.js` (both `1.4.0` now). Bump them together.
+- The version lives in `version` in `package.json` and in the `version` field `status()` returns in `index.js` (both `1.4.1` now). Bump them together.
 
 ## The end-to-end suite
 

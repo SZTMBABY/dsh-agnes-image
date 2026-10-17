@@ -2,6 +2,14 @@
 
 All notable changes to `dsh-agnes-image`. Versions track the plugin's own `version` field (the host half reports it through `GET /api/agnes-image/status`).
 
+## 1.4.1
+
+- **The tarball's docs catch up with the repository.** 1.4.0 was packed before the npm installation notes landed, so the published README had no `npm install` path and `docs/install*.md` still described the old copy-only flow. 1.4.1 ships the same docs the repository shows.
+- **LICENSE names the holder.** The publish step used to substitute `{{COPYRIGHT_HOLDER}}`; the file itself now carries the name, so the tarball no longer ships a template placeholder.
+- **One `package.json` everywhere.** Repository publishing stopped rewriting `keywords`, `engines` and `homepage`, so the repository copy is byte-identical to the one inside the tarball.
+- Docs pin `npm install dsh-agnes-image` instead of a version, so they cannot go stale between releases.
+
+
 ## 1.4.0
 
 - **Cards carry a thumbnail by default.** Collapsed cards now show a thumbnail on top and the file name below (images 96×96, video posters 160×90); the prompt, media facts and action buttons live behind the expand chevron. The expand area stays in the DOM and animates `grid-template-rows: 0fr → 1fr`, and is marked `inert` while collapsed.

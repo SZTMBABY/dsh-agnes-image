@@ -36,7 +36,7 @@ The package is on npm with no dependencies, and `files` limits it to source, doc
 ```powershell
 $profile = "$env:USERPROFILE\.dsh\profiles\desktop"
 Push-Location $profile
-npm install dsh-agnes-image@1.4.0
+npm install dsh-agnes-image
 Pop-Location
 # then add "dsh-agnes-image" to $profile\package.json -> dsh.profile.bundles
 ```
@@ -47,7 +47,7 @@ Registering `dsh.profile.bundles` and restarting the profile are still yours to 
 
 Overwrite the files in `node_modules\dsh-agnes-image` (or re-run install_bundle / `pnpm add`), then restart the profile.
 
-The version appears in two places: `version` in `package.json`, and the `version` field `status()` returns in `index.js`. Both currently say `1.4.0`. Bump them together — `/status` is what the panel displays.
+The version appears in two places: `version` in `package.json`, and the `version` field `status()` returns in `index.js`. Both currently say `1.4.1`. Bump them together — `/status` is what the panel displays.
 
 Host-half changes always need a profile restart; a loaded module generation cannot be hot-replaced. Client-half (`client.js`) changes only need a page refresh: the host recomposes the graph and serves a new rev.
 

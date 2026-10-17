@@ -241,7 +241,7 @@ The same package is on npm, so the copy step can be left to npm. It has no depen
 ```powershell
 $profile = "$env:USERPROFILE\.dsh\profiles\desktop"
 Push-Location $profile
-npm install dsh-agnes-image@1.4.0
+npm install dsh-agnes-image
 Pop-Location
 # and still add "dsh-agnes-image" to dsh.profile.bundles in $profile\package.json
 ```

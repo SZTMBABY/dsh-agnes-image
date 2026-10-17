@@ -6,7 +6,7 @@
 
 **插件里没有 API key。** 装好后先打开面板「设置」页填一次并保存，生成功能才会启用；没配置时按钮置灰并说明原因。
 
-按 DSH 官方 bundle 格式手写，没有构建步骤：`index.js` 是宿主半，`client.js` 就是浏览器产物。当前版本 `1.4.0`。
+按 DSH 官方 bundle 格式手写，没有构建步骤：`index.js` 是宿主半，`client.js` 就是浏览器产物。当前版本 `1.4.1`。
 
 用到的三个 Agnes 接口：
 
@@ -258,7 +258,7 @@ Copy-Item $src "$profile\node_modules\dsh-agnes-image" -Recurse -Force
 ```powershell
 $profile = "$env:USERPROFILE\.dsh\profiles\desktop"
 Push-Location $profile
-npm install dsh-agnes-image@1.4.0
+npm install dsh-agnes-image
 Pop-Location
 # 仍然要把 "dsh-agnes-image" 追加进 $profile\package.json 的 dsh.profile.bundles
 ```
