@@ -53,9 +53,9 @@ A few notes:
 - The suite writes its own home and workspace into temp directories (`<tmp>\agnes-home-*`, `<tmp>\agnes-ws-*`) and never touches your real data directory.
 - The last section asserts against the shipped client source text — CSS and DOM behaviour that headless cannot exercise, so it checks the code that goes out instead.
 
-## install-agnes.mjs
+## install-agnes.mjs (author-side, not in this repo)
 
-`_sztm-tooling/tmp/install-agnes.mjs` is the dev-machine install helper. It does the two manual steps:
+`install-agnes.mjs` on the author's dev machine does the two manual steps:
 
 1. Back up the profile's `package.json` to `package.json.bak-agnes-image` (skipped if it already exists).
 2. Delete `<profile>\node_modules\dsh-agnes-image` and copy the tree in.

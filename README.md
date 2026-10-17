@@ -236,6 +236,16 @@ Copy-Item $src "$profile\node_modules\dsh-agnes-image" -Recurse -Force
 
 Restart the profile, open the sidebar panel, paste your Agnes API key in Settings and save.
 
+The same package is on npm, so the copy step can be left to npm. It has no dependencies:
+
+```powershell
+$profile = "$env:USERPROFILE\.dsh\profiles\desktop"
+Push-Location $profile
+npm install dsh-agnes-image@1.4.0
+Pop-Location
+# and still add "dsh-agnes-image" to dsh.profile.bundles in $profile\package.json
+```
+
 The plugin manager's `install_bundle` additionally runs `pnpm add` and updates `pnpm-lock.yaml` / `pnpm-workspace.yaml`. The manual install above only does the two steps. One note: a later `pnpm install` inside the profile may prune this unregistered `node_modules` directory. Re-run the copy, or use `pnpm add <absolute path to this repo>` to register it properly.
 
 ### Rollback

@@ -14,7 +14,7 @@
 
 ## 方式二：手动复制
 
-和 `install_bundle` 的两步一样，只是少了 pnpm 的记账（`_sztm-tooling/tmp/install-agnes.mjs` 的注释里就是这么描述的）。
+和 `install_bundle` 的两步一样，只是少了 pnpm 的记账。
 
 1. 把插件目录整个复制到 `%DSH_HOME%\profiles\<profile>\node_modules\dsh-agnes-image`。
 2. 把 `"dsh-agnes-image"` 追加到 `%DSH_HOME%\profiles\<profile>\package.json` 的 `dsh.profile.bundles` 数组里。
@@ -29,9 +29,19 @@ Copy-Item .\dsh-agnes-image "$profile\node_modules\dsh-agnes-image" -Recurse -Fo
 
 注意：以后在 profile 里跑 `pnpm install`，未登记的 `node_modules` 目录可能被清掉。重跑上面的复制，或者用 `pnpm add <本目录绝对路径>` 正式登记。
 
-### 用脚本做上面两步
+## 方式三：npm
 
-`_sztm-tooling/tmp/install-agnes.mjs` 把这两步写成了脚本：先把 profile 的 `package.json` 备份成 `package.json.bak-agnes-image`（已存在就不覆盖），删掉旧的 `node_modules\dsh-agnes-image`，整树复制，再把包名写进 `dsh.profile.bundles`。它需要 profile 目录的写权限；写入前会检查 `dsh.profile.bundles` 确实是个数组，不是就直接报错。
+包发在 npm 上，零依赖，`files` 只含源码、文档和截图，所以复制那一步可以交给 npm：
+
+```powershell
+$profile = "$env:USERPROFILE\.dsh\profiles\desktop"
+Push-Location $profile
+npm install dsh-agnes-image@1.4.0
+Pop-Location
+# 然后把 "dsh-agnes-image" 加进 $profile\package.json 的 dsh.profile.bundles
+```
+
+装进 `node_modules` 之后仍然要登记 `dsh.profile.bundles` 再重启 profile。
 
 ## 升级
 

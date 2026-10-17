@@ -12,6 +12,7 @@ All notable changes to `dsh-agnes-image`. Versions track the plugin's own `versi
 - **Motion layer.** Tab switches slide 450 ms / 40 px on `cubic-bezier(.16,1,.3,1)` with direction following tab order, an orange inset-ring pill slides to the active tab in step (pure `calc()`, no DOM measurement), and thumbnails scale 1.03× with an orange ring on hover. Everything honours `prefers-reduced-motion: reduce`. Slide keyframes animate `transform` only — an `opacity` start made tall form tabs flash the bare panel background for ~100 ms.
 - **Panel-only credentials.** `Config.apiKey` and the environment-variable fallback are gone; the key is read from the panel's Settings tab only (`%DSH_HOME%\agnes-image\settings.json`). Without a key the generation/optimize entry points refuse with `No Agnes API key configured: …`. `status` returns only `keySource` and a masked `keyHint`.
 - Twelve routes (adds `/open` and `/video-cover`); every route declares `requestBody: 'buffered'`.
+- Published to npm as [`dsh-agnes-image@1.4.0`](https://www.npmjs.com/package/dsh-agnes-image) (zero dependencies, `files` limited to source, docs and screenshots).
 
 ## 1.3.0
 

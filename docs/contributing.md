@@ -53,9 +53,9 @@ node --check client.js
 - 套件自己会往临时目录写 home 和工作区（`<tmp>\agnes-home-*`、`<tmp>\agnes-ws-*`），不碰真实数据目录。
 - 最后一段断言校验的是客户端源码里的 CSS/DOM 行为（动效、进度条、封面卡片），headless 跑不出来，所以直接对着发出去的代码文本断言。
 
-## install-agnes.mjs
+## 安装助手脚本（作者自用，不在仓库里）
 
-`_sztm-tooling/tmp/install-agnes.mjs` 是开发机上用的安装助手，做的是手动安装那两步：
+作者开发机上的 `install-agnes.mjs` 做的是手动安装那两步：
 
 1. 备份 profile 的 `package.json` 成 `package.json.bak-agnes-image`，已经存在就不覆盖。
 2. 删掉 `<profile>\node_modules\dsh-agnes-image`，整树复制过去。

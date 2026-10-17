@@ -14,7 +14,7 @@ Ask the agent to call `install_bundle` with the plugin directory. It does the tw
 
 ## Option 2: copy it by hand
 
-The same two steps as `install_bundle`, minus the pnpm bookkeeping. The comment at the top of the helper script `_sztm-tooling/tmp/install-agnes.mjs` describes it the same way.
+The same two steps as `install_bundle`, minus the pnpm bookkeeping.
 
 1. Copy the whole plugin directory to `%DSH_HOME%\profiles\<profile>\node_modules\dsh-agnes-image`.
 2. Append `"dsh-agnes-image"` to the `dsh.profile.bundles` array in `%DSH_HOME%\profiles\<profile>\package.json`.
@@ -29,9 +29,19 @@ Copy-Item .\dsh-agnes-image "$profile\node_modules\dsh-agnes-image" -Recurse -Fo
 
 One gotcha: a later `pnpm install` inside the profile can prune an unregistered directory in `node_modules`. Re-run the copy, or use `pnpm add <absolute path to this directory>` so pnpm records it properly.
 
-### The same two steps as a script
+## Option 3: npm
 
-`_sztm-tooling/tmp/install-agnes.mjs` does the two steps for you: back up the profile's `package.json` to `package.json.bak-agnes-image` (skipped if that file already exists), delete any old `node_modules\dsh-agnes-image`, copy the tree, then push the package name into `dsh.profile.bundles`. It needs write permission on the profile directory, and it verifies that `dsh.profile.bundles` really is an array before writing anything.
+The package is on npm with no dependencies, and `files` limits it to source, docs and screenshots, so npm can do the copy:
+
+```powershell
+$profile = "$env:USERPROFILE\.dsh\profiles\desktop"
+Push-Location $profile
+npm install dsh-agnes-image@1.4.0
+Pop-Location
+# then add "dsh-agnes-image" to $profile\package.json -> dsh.profile.bundles
+```
+
+Registering `dsh.profile.bundles` and restarting the profile are still yours to do.
 
 ## Upgrade
 

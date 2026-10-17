@@ -200,7 +200,7 @@ No Agnes API key configured: open the panel Settings tab and save one first (the
 
 `ConnectionFetchRoute.requestBody` 的类型是 `'buffered' | 'streaming'`（`ConnectionRequestBodyMode`，没有「不传」这一档），而 `createSharedFetchHandler` 的 `requestBodyMode` 会把它原样返回（`dsh-client-connection/lib/index.js:610-613`）。http bridge（同文件 `:43-81`）只判断 `bodyMode === "buffered"`，其余值一律走 streaming 分支，用 `Readable.toWeb(req)` 造一个带 body 的 Request。这对 GET/HEAD 是非法构造，`new Request(url, { method: 'GET', body })` 直接抛错，请求在任何响应产生之前就失败，浏览器只看到 400 且响应体为空，没有 content-type。
 
-因此本插件每一条路由都显式写 `requestBody: 'buffered'`，三条 GET 路由也不例外。`_sztm-tooling/tmp/agnes-test/run.mjs` 里有对应的回归断言（`requestBody declared …` / `bridge accepts …`），改动路由时不会漏。
+因此本插件每一条路由都显式写 `requestBody: 'buffered'`，三条 GET 路由也不例外。作者的回归套件里有对应的断言（`requestBody declared …` / `bridge accepts …`），改动路由时不会漏。
 
 ### 视频上游的免费档限流：实测记录
 
@@ -253,6 +253,18 @@ Copy-Item $src "$profile\node_modules\dsh-agnes-image" -Recurse -Force
 
 插件管理器的安装还会 `pnpm add` 并写 `pnpm-lock.yaml` 与 `pnpm-workspace.yaml`；手工安装只做上面两步。
 
+同一个包也发在 npm 上（零依赖），复制这一步可以交给 npm：
+
+```powershell
+$profile = "$env:USERPROFILE\.dsh\profiles\desktop"
+Push-Location $profile
+npm install dsh-agnes-image@1.4.0
+Pop-Location
+# 仍然要把 "dsh-agnes-image" 追加进 $profile\package.json 的 dsh.profile.bundles
+```
+
+装完重启 profile，打开侧边栏面板，在设置里粘贴自己的 Agnes API key 并保存。
+
 注意：之后若在 profile 里跑 `pnpm install`，这个未登记的 node_modules 目录可能被清理。届时重跑上面的复制，或改用 `pnpm add <本目录绝对路径>` 正式登记。
 
 ### 回滚
@@ -265,7 +277,7 @@ Copy-Item $src "$profile\node_modules\dsh-agnes-image" -Recurse -Force
 
 ## 开发期验证
 
-`_sztm-tooling\tmp\agnes-test\run.mjs`（在 workspace 里）用真实的 `@deepseek-ai/dsh-tools` 加 `schemastery` 加载两个半。覆盖范围：
+作者的回归套件（`run.mjs`，不在本仓库里）用真实的 `@deepseek-ai/dsh-tools` 加 `schemastery` 加载两个半。覆盖范围：
 
 - 两个工具与十二条路由注册、`requestBody` 契约与 bridge 兼容性；
 - Config 默认值（含视频与优化器），以及「Config 里没有凭据」；
@@ -295,4 +307,4 @@ node run.mjs
 
 套件里的真实上游调用（出图 ×2、优化 ×2）都套了 `retryUpstream()`，只对 429/5xx 重试，最多 6 次、每次间隔 20 秒。Agnes 免费队列的 503/429 是分钟级抖动，不重试会误报插件缺陷。
 
-视频链路另有真实端到端冒烟证据（`_sztm-tooling\tmp\smoke_video3.mjs`）：4 秒 720P 任务从 `queued` → `pending`(0) → `in_progress`(10) → 70 → `completed`(100) 用时约 181 秒，产物 3.6 MB `ftypisom` MP4。期间轮询夹着 429，这正是轮询必须把 429 当可重试的原因。
+视频链路另有真实端到端冒烟证据：4 秒 720P 任务从 `queued` → `pending`(0) → `in_progress`(10) → 70 → `completed`(100) 用时约 181 秒，产物 3.6 MB `ftypisom` MP4。期间轮询夹着 429，这正是轮询必须把 429 当可重试的原因。

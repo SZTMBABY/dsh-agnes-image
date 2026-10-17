@@ -1,14 +1,45 @@
 {
   "name": "dsh-agnes-image",
   "version": "1.4.0",
-  "private": true,
-  "description": "Agnes image and video generation for DeepSeek Harness: agnes_generate_image / agnes_generate_video agent tools, an AI prompt optimizer (Agnes text model or the harness' own model), and a sidebar panel (images / videos / library / settings) whose API key is entered in the panel and whose cards show thumbnails, hand files to the desktop default app on double click, and never play videos in place.",
+  "description": "Agnes image and video generation for DeepSeek Harness: two agent tools, an AI prompt optimizer, and a sidebar panel whose API key is entered in the panel and never shipped in the code.",
+  "license": "MIT",
+  "author": "SZTMBABY",
   "type": "module",
   "icon": "icon.svg",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "agnes",
+    "image-generation",
+    "video-generation"
+  ],
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
     "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "icon.svg",
+    "README.md",
+    "README_ZH.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "docs",
+    "screenshots"
+  ],
+  "engines": {
+    "node": ">=22.19"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SZTMBABY/dsh-agnes-image.git"
+  },
+  "homepage": "https://github.com/SZTMBABY/dsh-agnes-image",
+  "bugs": {
+    "url": "https://github.com/SZTMBABY/dsh-agnes-image/issues"
   },
   "dsh": {
     "manifestVersion": 1,
@@ -26,24 +57,5 @@
         "@deepseek-ai/dsh-client-ui-workspace"
       ]
     }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SZTMBABY/dsh-agnes-image.git"
-  },
-  "homepage": "https://github.com/SZTMBABY/dsh-agnes-image",
-  "bugs": {
-    "url": "https://github.com/SZTMBABY/dsh-agnes-image/issues"
-  },
-  "license": "MIT",
-  "keywords": [
-    "dsh-plugin",
-    "deepseek-harness",
-    "agnes",
-    "image-generation",
-    "video-generation"
-  ],
-  "engines": {
-    "node": ">=22.19"
   }
 }
