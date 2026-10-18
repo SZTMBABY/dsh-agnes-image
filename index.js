@@ -272,7 +272,7 @@ export function apply(ctx, config) {
       llmAvailable: llmService() !== undefined,
       llmRoute: llmSelection(),
       dataDir: dataDir(),
-      version: '1.4.1',
+      version: '1.4.2',
     }
   }
 

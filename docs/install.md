@@ -47,7 +47,7 @@ Pop-Location
 
 覆盖 `node_modules\dsh-agnes-image` 里的文件（或重跑 install_bundle / `pnpm add`），然后重启 profile。
 
-版本号写在两处：`package.json` 的 `version`，和 `index.js` 里 `status()` 返回的 `version`。当前都是 `1.4.1`，改版本时两处要一起改，`/status` 是面板显示的那一份。
+版本号写在两处：`package.json` 的 `version`，和 `index.js` 里 `status()` 返回的 `version`。当前都是 `1.4.2`，改版本时两处要一起改，`/status` 是面板显示的那一份。
 
 宿主半改动必须重启 profile，已加载的模块代不能热替换。客户端半（`client.js`）改动只要刷新页面，宿主会重新组合 graph 并给出新的 rev。
 

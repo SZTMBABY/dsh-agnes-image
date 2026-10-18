@@ -2,6 +2,12 @@
 
 All notable changes to `dsh-agnes-image`. Versions track the plugin's own `version` field (the host half reports it through `GET /api/agnes-image/status`).
 
+## 1.4.2
+
+- **The README leads with what you get.** Both language versions open with the pitch — 4K stills, 4–12 s 720P video on Agnes's free queue, a one-click prompt optimizer — followed by the install command and a demo animation, instead of making the reader scroll through the file table first.
+- **`screenshots/demo.gif`.** Five real panel frames (Images → Videos → Image library → Video library → Settings) at 1100×596, 308 KB, so the first thing a visitor sees is the panel working rather than a static screenshot table.
+- **Version bumped in both places.** `package.json` and the `version` field `status()` returns now report `1.4.2`.
+
 ## 1.4.1
 
 - **The tarball's docs catch up with the repository.** 1.4.0 was packed before the npm installation notes landed, so the published README had no `npm install` path and `docs/install*.md` still described the old copy-only flow. 1.4.1 ships the same docs the repository shows.

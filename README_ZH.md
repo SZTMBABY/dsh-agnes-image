@@ -2,11 +2,21 @@
 
 [English](README.md) · **中文**
 
+> **让 DeepSeek Harness 不只画得出来，还能动起来。** 4K 出图、4–12 秒 720P 出片、提示词一键优化，库页签双击直接交给系统播放器。视频走 Agnes 免费队列（当前 ¥0/秒），队列满时插件自己退避重试，不用你手动重来。
+
+```bash
+npm install dsh-agnes-image
+# 或
+dsh plugin --profile <你的 profile> add dsh-agnes-image
+```
+
+![面板：图片生成 → 视频生成 → 库 → 设置](screenshots/demo.gif)
+
 这个插件把 Agnes 的生图与视频生成接进 DeepSeek Harness。装完后你会得到两个原生的 agent 工具，一个侧边栏栏目，以及两个提示词框下方的 AI 优化按钮。
 
 **插件里没有 API key。** 装好后先打开面板「设置」页填一次并保存，生成功能才会启用；没配置时按钮置灰并说明原因。
 
-按 DSH 官方 bundle 格式手写，没有构建步骤：`index.js` 是宿主半，`client.js` 就是浏览器产物。当前版本 `1.4.1`。
+按 DSH 官方 bundle 格式手写，没有构建步骤：`index.js` 是宿主半，`client.js` 就是浏览器产物。当前版本 `1.4.2`。
 
 用到的三个 Agnes 接口：
 

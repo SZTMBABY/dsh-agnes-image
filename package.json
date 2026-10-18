@@ -1,6 +1,6 @@
 {
   "name": "dsh-agnes-image",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Agnes image and video generation for DeepSeek Harness: two agent tools, an AI prompt optimizer, and a sidebar panel whose API key is entered in the panel and never shipped in the code.",
   "license": "MIT",
   "author": "SZTMBABY",

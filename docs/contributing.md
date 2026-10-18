@@ -24,7 +24,7 @@ node --check client.js
 - 只用 `node --check` 过语法。它不做类型检查，也不读依赖，能过不代表逻辑对。
 - 改了 `client.js`：宿主会重新组合 graph 并给出新的 rev，刷新页面就能拿到新代码（HMR 接收器生效时不用手动刷）。
 - 改了 `index.js`：已加载的模块代不能热替换，必须重启 profile。
-- 版本号在 `package.json` 的 `version` 和 `index.js` 里 `status()` 返回的 `version`（当前都是 `1.4.1`）两处，一起改。
+- 版本号在 `package.json` 的 `version` 和 `index.js` 里 `status()` 返回的 `version`（当前都是 `1.4.2`）两处，一起改。
 
 ## 端到端套件
 

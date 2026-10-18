@@ -2,6 +2,16 @@
 
 **English** · [中文](README_ZH.md)
 
+> **DeepSeek Harness can draw — and now it can move.** 4K stills, 4–12 s 720P video, a one-click prompt optimizer, a library that hands files to your desktop. Video runs on Agnes's free queue (¥0/s today); when the queue is busy the plugin backs off and retries instead of failing.
+
+```bash
+npm install dsh-agnes-image
+# or
+dsh plugin --profile <your profile> add dsh-agnes-image
+```
+
+![The panel: Images → Videos → Library → Settings](screenshots/demo.gif)
+
 Agnes image and video generation for [DeepSeek Harness](https://github.com/deepseek-harness). It adds two agent tools (`agnes_generate_image`, `agnes_generate_video`), an AI prompt optimizer, and a sidebar panel with four tabs: Images, Videos, Library, Settings. Progress reporting is honest, cards are poster-first, and files are handed off to the desktop.
 
 The plugin ships without an API key. Install it, open the panel's Settings tab, paste your Agnes key once and save. Only then do the generation buttons light up; until then they are disabled and explain why. Credentials live in your own `%DSH_HOME%` data directory, never in this repository.
